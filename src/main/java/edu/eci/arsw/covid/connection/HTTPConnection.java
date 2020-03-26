@@ -54,13 +54,13 @@ public class HTTPConnection {
 	 * 
 	 * @return
 	 */
-	public static HttpResponse<JsonNode> getResponseAll(){
-		HttpResponse<JsonNode> response=null;
+	public static HttpResponse<String> getResponseAll(){
+		HttpResponse<String> response=null;
 		
 	    try {
 			response = Unirest.get(REQUEST_URL)
 			        .header(HEADER_HOST, RAPIAPI_HOST)
-			        .header(HEADER_KEY,RAPIAPI_KEY).asJson();
+			        .header(HEADER_KEY,RAPIAPI_KEY).asString();
 		} 
 	    catch (UnirestException e) {
 			e.printStackTrace();

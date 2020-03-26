@@ -5,19 +5,28 @@ import java.util.List;
 
 public class Data {
 	
-	private CovidStats covidStats;
+	private String lastChecked;
+	private List<Covid19Stats> covid19Stats;
 	
 	public Data(){
 		
 	}
 	
-	
-	public CovidStats getCovid19Stats() {
-		return this.covidStats;
+	public String getLastChecked() {
+		return this.lastChecked;
 	}
 	
-	public void setCovid19StatsList(CovidStats covidStats) {
-		this.covidStats=covidStats;
+	public void setLastChecked(String lastChecked) {
+		this.lastChecked=lastChecked;
+	}
+	
+	
+	public List<Covid19Stats> getCovid19Stats() {
+		return this.covid19Stats;
+	}
+	
+	public void setCovid19StatsList(List<Covid19Stats> covid19Stats) {
+		this.covid19Stats=covid19Stats;
 	}
 	
 	

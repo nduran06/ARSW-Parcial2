@@ -14,6 +14,7 @@ import com.mashape.unirest.http.JsonNode;
 
 import edu.eci.arsw.covid.cache.CovidCache;
 import edu.eci.arsw.covid.connection.HTTPConnection;
+import edu.eci.arsw.covid.model.ApiResponse;
 import edu.eci.arsw.covid.model.Data;
 import edu.eci.arsw.covid.services.CovidServices;
 
@@ -24,14 +25,18 @@ public class CovidServicesImpl implements CovidServices{
 	private CovidCache covidCache;
 	
 	@Override
-	public Data getAllCovid() {
-		Gson gson=new Gson();
-		HttpResponse<JsonNode> response=HTTPConnection.getResponseAll();
+	public ApiResponse getAllCovid() {
+		Gson gson=new GsonBuilder().create();
+		HttpResponse<String> response=HTTPConnection.getResponseAll();
 		//System.out.println(response.getBody().toString());
-		Data data = gson.fromJson(response.getBody().toString(), Data.class);
+		//Data data = gson.fromJson(response.getBody().toString(), Data.class);
 		
-		
-		return data;
+	    //System.out.println(response.getBody());
+	    ApiResponse apiResponse=null;
+	    
+	    apiResponse=gson.fromJson(response.getBody(), new TypeToken<ApiResponse>(){}.getType());
+	    
+		return apiResponse;
 	}
 	
 	
