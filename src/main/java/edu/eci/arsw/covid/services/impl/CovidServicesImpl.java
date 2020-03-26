@@ -15,6 +15,7 @@ import com.mashape.unirest.http.JsonNode;
 import edu.eci.arsw.covid.cache.CovidCache;
 import edu.eci.arsw.covid.connection.HTTPConnection;
 import edu.eci.arsw.covid.model.ApiResponse;
+import edu.eci.arsw.covid.model.Covid19Stats;
 import edu.eci.arsw.covid.model.Data;
 import edu.eci.arsw.covid.services.CovidServices;
 
@@ -24,24 +25,25 @@ public class CovidServicesImpl implements CovidServices{
 	@Autowired
 	private CovidCache covidCache;
 	
-	private ApiResponse saveInCache(HttpResponse<String> response) {
+	private List<Covid19Stats> saveInCache(HttpResponse<String> response) {
 		Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
 		ApiResponse apiResponse=null;
 	    apiResponse=gson.fromJson(response.getBody(), new TypeToken<ApiResponse>(){}.getType());
-		return apiResponse;
+	    
+		return apiResponse.getData().getCovid19Stats();
 		
 	}
 	
 	
 	@Override
-	public ApiResponse getAllCovid() {
+	public List<Covid19Stats> getAllCovid() {
 		HttpResponse<String> response=HTTPConnection.getResponseAll();
 		return saveInCache(response);
 	}
 	
 	
 	@Override
-	public ApiResponse getCovidByCountry(String name) {
+	public List<Covid19Stats> getCovidByCountry(String name) {
 		
 		HttpResponse<String> response=HTTPConnection.getResponseByCountry(name);
 		return saveInCache(response);

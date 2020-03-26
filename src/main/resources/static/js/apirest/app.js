@@ -5,16 +5,18 @@ var app = (function () {
 	var markers;
 	var bounds;
 
-	var getTable = function (airports) {
+	var getTable = function (covids) {
+		alert("table")
 
-		$("#airportsTableBody").empty();
+		$("#covidsTableBody").empty();
 
-		airports.map(function (airport) {
-			$("#airportsTable > tbody").append(
-				"<tr> <td>" + airport.code + "</td>" +
-				"<td>" + airport.name + "</td>" +
-				"<td>" + airport.city + "</td>" +
-				"<td>" + airport.countryCode + "</td>" +
+		covids.map(function (covid) {
+			alert(covid)
+			$("#covidsTableBody").append(
+				"<tr> <td>" + covid.country + "</td>"+
+				"<td>" +  + "</td>" +
+				"<td>" +  + "</td>" +
+				"<td>" +  + "</td>" +
 				"</tr>"
 			);
 		});
@@ -22,7 +24,7 @@ var app = (function () {
 
 
 	var plotMarkers = function (ms) {
-		
+		getTable(ms)
 	};
 
 	var init = function () {
@@ -61,7 +63,7 @@ var app = (function () {
 
 	var getCovids = function () {
 		//clearMarkers();
-		apiclient.getAllData();
+		apiclient.getAllData(plotMarkers);
 	};
 
 
