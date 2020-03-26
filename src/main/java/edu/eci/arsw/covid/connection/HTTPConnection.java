@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -53,13 +54,13 @@ public class HTTPConnection {
 	 * 
 	 * @return
 	 */
-	public static HttpResponse<String> getResponseAll(){
-		HttpResponse<String> response=null;
+	public static HttpResponse<JsonNode> getResponseAll(){
+		HttpResponse<JsonNode> response=null;
 		
 	    try {
 			response = Unirest.get(REQUEST_URL)
 			        .header(HEADER_HOST, RAPIAPI_HOST)
-			        .header(HEADER_KEY,RAPIAPI_KEY).asString();
+			        .header(HEADER_KEY,RAPIAPI_KEY).asJson();
 		} 
 	    catch (UnirestException e) {
 			e.printStackTrace();

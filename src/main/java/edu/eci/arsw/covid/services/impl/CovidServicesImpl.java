@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
 
 import edu.eci.arsw.covid.cache.CovidCache;
 import edu.eci.arsw.covid.connection.HTTPConnection;
@@ -24,8 +25,12 @@ public class CovidServicesImpl implements CovidServices{
 	
 	@Override
 	public List<Data> getAllCovid() {
-		
-		return this.covidCache.getAllCovids();
+		Gson gson=new GsonBuilder().create();
+		HttpResponse<JsonNode> response=HTTPConnection.getResponseAll();
+		//System.out.println(response.getBody().toString());
+		Data data = gson.fromJson(response.getBody().toString(), Data.class);
+		System.out.println(data.getLastChecked());
+		return null;
 	}
 	
 	
