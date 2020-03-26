@@ -35,6 +35,18 @@ public class CovidApplicationController {
               
     }
 	
+	@RequestMapping(path="/covids/countries", method = RequestMethod.GET)
+	public ResponseEntity<?> getAllCovidForCountry(){
+		try {
+			return new ResponseEntity<>(this.covidServices.getAllCovidForCountry(),HttpStatus.ACCEPTED);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+		}
+              
+    }
+	
 	
 	@GetMapping("/covids/country")
 	public ResponseEntity<?> getAirportsByName(@RequestParam String country){

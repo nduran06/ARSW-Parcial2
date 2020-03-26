@@ -11,7 +11,7 @@ var app = (function () {
 
 		covids.map(function (covid) {
 			$("#covidsTableBody").append(
-				"<tr> <td>" + covid.name + "</td>"+
+				"<tr> <td> <a href='index.html'>" + covid.name + "</a></td>"+ 
 				"<td>" + covid.deaths + "</td>" +
 				"<td>" + covid.confirmed + "</td>" +
 				"<td>" + covid.recovered + "</td>" +
@@ -61,12 +61,16 @@ var app = (function () {
 
 	var getCovids = function () {
 		//clearMarkers();
-		apiclient.getAllData(plotMarkers);
+		apiclient.getAllDataCountries(plotMarkers);
 	};
 
+	var start = function(){
+		getCovids();
+	}
 
 	return {
 		init: init,
+		start: start,
 		getCovids: getCovids
 	}
 

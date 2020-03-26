@@ -1,0 +1,24 @@
+table thead {
+  background-color: #cee2eb;
+}
+
+.table{
+	width: 70%;
+	height: 20%;
+	margin: 0 auto;
+	
+}
+
+.covidsCont{
+	text-align:center;
+}
+
+.sup{
+	width: 5%;
+	margin-top: 1%;
+	margin-left: 1%;
+}
+
+h1{
+	text-align:center;
+}

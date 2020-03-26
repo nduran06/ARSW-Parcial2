@@ -2,8 +2,8 @@ var apiclient = (function () {
 	var url = "http://localhost:8080/rapidapi"; 
 
 	return {
-		getAllData: function (callback) {
-			var urlApp = url + "/covids";
+		getAllDataCountries: function (callback) {
+			var urlApp = url + "/covids/countries";
 			$.ajax({
 				url: urlApp,
 				type: "GET",

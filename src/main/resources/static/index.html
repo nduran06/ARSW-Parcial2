@@ -12,29 +12,25 @@
 	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 	<meta http-equiv="Pragma" content="no-cache">
 
-	<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css"/>
-	<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/apirest/app.js"></script>
     <script src="js/apirest/apiclient.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?language=en"></script>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+	<script src="https://maps.googleapis.com/maps/api/js?language=en"></script>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body onload="app.start()">
 	<form>
 		<br />
-		<h1>COVIDS</h1>
+		<h1 id="Users">COVID-19 CORONAVIRUS ARSW</h1>
 
-		<button type="button" class="btn btn-primary" onclick="app.getCovids()">
+		<!--<button type="button" class="btn btn-primary" onclick="app.getCovids()">
 				Search
-			</button>
+			</button>-->
 		<!--<div>
 			<input id="airportFinder" type="text" class="form-control">
 			<button type="button" class="btn btn-primary" onclick="app.findAirportsByName(airportFinder.value)">
@@ -43,8 +39,9 @@
 
 		</div>-->
 		
-		<div>
-			<table id="covidsTable" class="table">
+		<div class="covidsCont">
+			<br/>
+			<table id="covidsTable" class="table table-hover">
 				<thead>
 					<tr>
 						<th>Country</th>

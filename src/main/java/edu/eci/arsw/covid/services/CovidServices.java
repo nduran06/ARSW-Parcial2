@@ -1,6 +1,5 @@
 package edu.eci.arsw.covid.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.eci.arsw.covid.model.ApiResponse;
@@ -11,9 +10,11 @@ import edu.eci.arsw.covid.model.Data;
 
 public interface CovidServices {
 	
-	public ArrayList<Country> getAllCovid();
+	public List<Covid19Stats> getAllCovid();
 	
-	public ArrayList<Country> getCovidByCountry(String name);
+	public List<Covid19Stats> getCovidByCountry(String name);
+
+	List<Country> getAllCovidForCountry();
 	
 	
 }

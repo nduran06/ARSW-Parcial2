@@ -71,25 +71,34 @@ public class CovidServicesImpl implements CovidServices{
 		
 	}
 	
-	private ArrayList<Country> saveInCache(HttpResponse<String> response) {
+	private List<Covid19Stats> saveInCache(HttpResponse<String> response) {
 		Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
 		ApiResponse apiResponse=null;
 	    apiResponse=gson.fromJson(response.getBody(), new TypeToken<ApiResponse>(){}.getType());
 	    
-		return createCountries(apiResponse.getData().getCovid19Stats());
+		return apiResponse.getData().getCovid19Stats();
 		
 	}
 	
 	
 	@Override
-	public ArrayList<Country> getAllCovid() {
+	public List<Country> getAllCovidForCountry() {
+		HttpResponse<String> response=HTTPConnection.getResponseAll();
+		List<Covid19Stats> covids= saveInCache(response);
+		
+		return createCountries(covids);
+	}
+	
+	
+	@Override
+	public List<Covid19Stats> getAllCovid() {
 		HttpResponse<String> response=HTTPConnection.getResponseAll();
 		return saveInCache(response);
 	}
 	
 	
 	@Override
-	public ArrayList<Country> getCovidByCountry(String name) {
+	public List<Covid19Stats> getCovidByCountry(String name) {
 		
 		HttpResponse<String> response=HTTPConnection.getResponseByCountry(name);
 		return saveInCache(response);
