@@ -9,7 +9,8 @@ html, body{
 .map{
     height: 50%;
 	width: 50%;
-	top: 70%
+	top: 75%;
+	left:5%;
 
 }
 
@@ -29,7 +30,7 @@ table thead {
 }
 
 .first {
-	width: 70%;
+	width: 90%;
     overflow-y: scroll;
     height: 50%;       
 	text-align:center;
@@ -41,6 +42,7 @@ table thead {
 
 .parte2{
 	top:70%;
+	width: 90%;
 	position: absolute;
 	margin: 0 auto;
 	left: 0;
@@ -56,5 +58,15 @@ table thead {
 
 h1{
 	text-align:center;
+}
+
+.covidsCountry{
+	width: 35%;
+	position: absolute;
+	margin: 0 auto;
+	left: 55%;
+	right: 0%;
+	top: 84%;
+
 }
 

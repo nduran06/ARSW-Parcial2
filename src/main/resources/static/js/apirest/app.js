@@ -26,7 +26,27 @@ var app = (function () {
 		$("#countryName").text(country_name);
 		$('#hideB').click();
 		getLocation(current_country);
+		getCovidsCountry(current_country);
 		
+	};
+
+
+	var getTableCurrentCountry=function(covid){
+		$("#covidsCountryTableBody").empty();
+
+		$("#covidsCountryTableBody").append(
+			"<tr> <td>" + covid.deaths + "</td>" +
+			"<td>" + covid.confirmed + "</td>" +
+			"<td>" + covid.recovered + "</td>" +
+			"</tr>"
+		);
+
+	}
+
+	var getCovidsCountry = function (countryName) {
+		clearMarkers();
+		alert(countryName);
+		apiclient.getCountryData(countryName, getTableCurrentCountry);
 	};
 
 
@@ -62,14 +82,11 @@ var app = (function () {
 
 	};
 
-	var findAirportsByName = function (name) {
-		clearMarkers();
-		apiclient.getAirportsByName(name, plotMarkers);
-	};
+	
 
 	var getCovids = function () {
 		clearMarkers();
-		apiclient.getAllDataCountries(plotMarkers);
+		apiclient.getAllDataCountries(getTable);
 	};
 
 	var hiddenCreate = function(){
@@ -77,11 +94,6 @@ var app = (function () {
     	el.style.display = (el.style.display == 'none') ? 'block' : 'none'; 
     }
 
-	var hideDiv = function(){
-		
-        $('#hideB').click();
-
-    };
 	
 	var start = function(){
 		document.getElementById("aux_button").style.display = "none";
@@ -99,8 +111,6 @@ var app = (function () {
 		}
 
 	};
-
-	
 
 	var plot = function (ms) {
 		var covids=JSON.parse(ms);

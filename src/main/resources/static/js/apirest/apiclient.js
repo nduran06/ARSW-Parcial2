@@ -22,6 +22,7 @@ var apiclient = (function () {
 				url: urlApp,
 				type: "GET",
 				success: function (res) {
+					alert(urlApp )
 					callback(res);
 				},
 				error: function (err) {
