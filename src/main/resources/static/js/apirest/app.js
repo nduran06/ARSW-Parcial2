@@ -5,6 +5,10 @@ var app = (function () {
 	var markers;
 	var bounds;
 	var current_country;
+	var current_deaths;
+	var current_confimed;
+	var current_recovered;
+
 
 	var getTable = function (covids) {
 
@@ -12,7 +16,8 @@ var app = (function () {
 
 		covids.map(function (covid) {
 			$("#covidsTableBody").append(
-				"<tr> <td onclick=app.setCurrentCountry('"+covid.name+"')>" + covid.name + "</td>"+ 
+				"<tr> <td onclick=app.setCurrentCountry('"+covid.name+"','"+covid.deaths+
+				"','"+covid.confirmed+"','"+covid.recovered+"')>" + covid.name + "</td>"+ 
 				"<td>" + covid.deaths + "</td>" +
 				"<td>" + covid.confirmed + "</td>" +
 				"<td>" + covid.recovered + "</td>" +
@@ -21,8 +26,11 @@ var app = (function () {
 		});
 	};
 
-	var setCurrentCountry=function(country_name){
+	var setCurrentCountry=function(country_name, deaths, confirmed, recovered){
 		current_country=country_name;
+		current_deaths=deaths;
+		current_confimed=confirmed;
+		current_recovered=recovered;
 		$("#countryName").text(country_name);
 		$('#hideB').click();
 		getLocation(current_country);
@@ -32,12 +40,12 @@ var app = (function () {
 
 
 	var getTableCurrentCountry=function(covid){
-		$("#covidsCountryTableBody").empty();
+		$("#covidsCountryTableHead").empty();
 
-		$("#covidsCountryTableBody").append(
-			"<tr> <td>" + covid.deaths + "</td>" +
-			"<td>" + covid.confirmed + "</td>" +
-			"<td>" + covid.recovered + "</td>" +
+		$("#covidsCountryTableHead").append(
+			"<tr> <th>" + current_deaths + "</tdh" +
+			"<th>" + current_confimed + "</th>" +
+			"<th>" + current_recovered + "</th>" +
 			"</tr>"
 		);
 
