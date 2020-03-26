@@ -24,24 +24,27 @@ public class CovidServicesImpl implements CovidServices{
 	@Autowired
 	private CovidCache covidCache;
 	
-	@Override
-	public ApiResponse getAllCovid() {
+	private ApiResponse saveInCache(HttpResponse<String> response) {
 		Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
-		HttpResponse<String> response=HTTPConnection.getResponseAll();
-		
-	    ApiResponse apiResponse=null;
-	    
+		ApiResponse apiResponse=null;
 	    apiResponse=gson.fromJson(response.getBody(), new TypeToken<ApiResponse>(){}.getType());
-	    
 		return apiResponse;
+		
 	}
 	
 	
 	@Override
-	public List<Data> getCovidByCountry(String name) {
+	public ApiResponse getAllCovid() {
+		HttpResponse<String> response=HTTPConnection.getResponseAll();
+		return saveInCache(response);
+	}
+	
+	
+	@Override
+	public ApiResponse getCovidByCountry(String name) {
 		
 		HttpResponse<String> response=HTTPConnection.getResponseByCountry(name);
-		System.out.println(response.getBody());
+		return saveInCache(response);
 		
 		/*Gson gson=new GsonBuilder().create();
 	    List<Data> data=null;
@@ -68,7 +71,6 @@ public class CovidServicesImpl implements CovidServices{
 	    }*/
 		
 	    
-		return null;
 	}
 
 	

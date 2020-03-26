@@ -3,6 +3,8 @@ package edu.eci.arsw.covid.connection;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import org.springframework.util.StringUtils;
+
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -28,6 +30,10 @@ public class HTTPConnection {
 	 * @return
 	 */
 	public static HttpResponse<String> getResponseByCountry(String name){
+		if(name.length()>2) {
+			name=name.toLowerCase();
+			name= StringUtils.capitalize(name);
+		}
 		String query=null;
 		try {
 			query = URLEncoder.encode(name, charset);

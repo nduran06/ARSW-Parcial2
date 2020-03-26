@@ -10,7 +10,7 @@ public interface CovidServices {
 	
 	public ApiResponse getAllCovid();
 	
-	public List<Data> getCovidByCountry(String name);
+	public ApiResponse getCovidByCountry(String name);
 	
 	
 }
