@@ -11,6 +11,12 @@ La aplicación tiene una arquitectura Cliente/Servidor donde el cliente es el br
 
 Se debe jecutar mvn spring-boot:run
 
+### Extensibilidad
+
+- El proyecto se puede extender adicionando implementaciones de las distintas interfaces, ya sea para los servicios o el modo como se almacena la información en caché.
+- Del mismo modo, se pueden adicionar más módulos de servicios app/apiclient que pueden ser utilizados para atender peticiones.
+- Se puede cambiar el proveedor creando una implementación sobre la interfaz seleccionada, y marcar a dicha implementación con @Service.
+
 ### Bonos
 
 Tiempo del caché
