@@ -21,6 +21,7 @@ public class CovidApplicationController {
 	@GetMapping("/covids")
 	public ResponseEntity<?> getAllCovid(){
 		try {
+			System.out.println(this.covidServices.getAllCovid());
 			return new ResponseEntity<>(this.covidServices.getAllCovid(),HttpStatus.ACCEPTED);  
 		}
 		catch(Exception e) {
