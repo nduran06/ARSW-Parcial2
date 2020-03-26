@@ -26,6 +26,39 @@ var app = (function () {
 		});
 	};
 
+
+	var getTableRegion = function (covids) {
+
+		$("#covidsRegionTableBody").empty();
+
+		covids.map(function (covid) {
+			$("#covidsRegionTableBody").append(
+				"<tr> <td>"+ covid.province + "</td>"+ 
+				"<td>" + covid.deaths + "</td>" +
+				"<td>" + covid.confirmed + "</td>" +
+				"<td>" + covid.recovered + "</td>" +
+				"</tr>"
+			);
+		});
+	};
+
+	var getTableCurrentCountry = function () {
+		$("#covidsCountryTableBody").empty();
+
+		$("#covidsCountryTableBody").append(
+			"<tr> <td>Num Deaths</td>" +
+			"<td>" + current_deaths + "</td>" +
+			"</tr>" +
+			"<tr> <td>Num Infected</td>" +
+			"<td>" + current_confimed + "</td>" +
+			"</tr>" +
+			"<tr> <td>Num Cured</td>" +
+			"<td>" + current_recovered + "</td>" +
+			"</tr>"
+		);
+
+	};
+
 	var setCurrentCountry=function(country_name, deaths, confirmed, recovered){
 		current_country=country_name;
 		current_deaths=deaths;
@@ -34,27 +67,15 @@ var app = (function () {
 		$("#countryName").text(country_name);
 		$('#hideB').click();
 		getLocation(current_country);
+		getTableCurrentCountry();
 		getCovidsCountry(current_country);
 		
 	};
 
-
-	var getTableCurrentCountry=function(covid){
-		$("#covidsCountryTableHead").empty();
-
-		$("#covidsCountryTableHead").append(
-			"<tr> <th>" + current_deaths + "</tdh" +
-			"<th>" + current_confimed + "</th>" +
-			"<th>" + current_recovered + "</th>" +
-			"</tr>"
-		);
-
-	}
-
 	var getCovidsCountry = function (countryName) {
 		clearMarkers();
 		alert(countryName);
-		apiclient.getCountryData(countryName, getTableCurrentCountry);
+		apiclient.getCountryData(countryName, getTableRegion);
 	};
 
 

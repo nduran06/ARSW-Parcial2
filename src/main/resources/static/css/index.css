@@ -67,7 +67,20 @@ h1{
 	left: 55%;
 	right: 0%;
 	top: 84%;
+	text-align:center;
 	
 
+}
+
+.second {
+	width: 90%;
+    overflow-y: scroll;
+    height: 50%;       
+	text-align:center;
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: 140%;
 }
 
