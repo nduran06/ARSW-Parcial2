@@ -26,12 +26,9 @@ public class CovidServicesImpl implements CovidServices{
 	
 	@Override
 	public ApiResponse getAllCovid() {
-		Gson gson=new GsonBuilder().create();
+		Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
 		HttpResponse<String> response=HTTPConnection.getResponseAll();
-		//System.out.println(response.getBody().toString());
-		//Data data = gson.fromJson(response.getBody().toString(), Data.class);
 		
-	    //System.out.println(response.getBody());
 	    ApiResponse apiResponse=null;
 	    
 	    apiResponse=gson.fromJson(response.getBody(), new TypeToken<ApiResponse>(){}.getType());

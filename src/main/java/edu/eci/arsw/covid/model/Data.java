@@ -1,6 +1,5 @@
 package edu.eci.arsw.covid.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
