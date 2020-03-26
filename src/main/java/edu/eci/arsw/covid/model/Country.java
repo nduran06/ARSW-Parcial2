@@ -1,5 +1,6 @@
 package edu.eci.arsw.covid.model;
 
+
 public class Country {
 	
 	private String name;
@@ -46,5 +47,5 @@ public class Country {
 	public void setRecovered(Integer recovered) {
 		this.recovered+=recovered;
 	}
-
+	
 }

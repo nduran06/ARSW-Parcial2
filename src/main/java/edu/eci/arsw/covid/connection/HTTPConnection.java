@@ -31,8 +31,14 @@ public class HTTPConnection {
 	 */
 	public static HttpResponse<String> getResponseByCountry(String name){
 		if(name.length()>2) {
-			name=name.toLowerCase();
-			name= StringUtils.capitalize(name);
+			String[] names=name.split(" ");
+			String ans=" ";
+			for(String n:names) {
+				n=n.toLowerCase();
+				n= StringUtils.capitalize(n); 
+				ans+=n+" ";
+			}
+			name=ans.trim();
 		}
 		String query=null;
 		try {

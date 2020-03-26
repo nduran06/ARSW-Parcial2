@@ -25,6 +25,7 @@ var app = (function () {
 		current_country=country_name;
 		$("#countryName").text(country_name);
 		$('#hideB').click();
+		
 	};
 
 

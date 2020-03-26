@@ -41,3 +41,9 @@ table thead {
 h1{
 	text-align:center;
 }
+
+.map{
+    height: 50%;
+    width: 50%;
+
+}
