@@ -35,7 +35,6 @@ var app = (function () {
 	};
 
 	var init = function () {
-		alert("init")
 		document.addEventListener('DOMContentLoaded', function () {
 			if (document.querySelectorAll('#map').length > 0) {
 				if (document.querySelector('html').lang)
@@ -69,7 +68,7 @@ var app = (function () {
 	};
 
 	var getCovids = function () {
-		//clearMarkers();
+		clearMarkers();
 		apiclient.getAllDataCountries(plotMarkers);
 	};
 
@@ -88,8 +87,20 @@ var app = (function () {
 		document.getElementById("aux_button").style.display = "none";
 		$('#hideB').click();
 		getCovids();
+		init();
 		
 	};
+
+	var clearMarkers = function () {
+		if (markersList) {
+			markersList.forEach(function (marker) {
+				marker.setMap(null);
+			});
+		}
+
+	};
+
+	
 
 	var plot = function (ms) {
 		var covids=JSON.parse(ms);

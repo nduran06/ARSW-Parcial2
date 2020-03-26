@@ -32,14 +32,12 @@
     <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 
-<body onload="app.init()">
+<body onload="app.start()">
+	
 	<form>
 		<br />
 		<h1 id="Users">COVID-19 CORONAVIRUS ARSW</h1>
-
-		<div id="map" class="map">
-
-				</div>
+		
 		<!--<button type="button" class="btn btn-primary" onclick="app.getCovids()">
 				Search
 			</button>-->
@@ -69,24 +67,26 @@
 			</div>
 		</div>
 
-		
-		
-		<div class="parte2">
-			<div id="selectedCountry">
-				<b>Country </b><output id="countryName"> </output>
-				<br/><br/>
-
-
-			</div>
-
-			<div class="titulo_boton" id="aux_button">
-				<button type="button" id="hideB" class="btn btn-danger btn-sm" onclick="app.hiddenCreate()">Create new blueprint</button>
-				
-			</div>
-		</div>
-		
-
 	</form>
+
+	<div class="parte2">
+		<div id="selectedCountry">
+			<b>Country </b><output id="countryName"> </output>
+			<br /><br />
+	
+	
+		</div>
+	
+		<div class="titulo_boton" id="aux_button">
+			<button type="button" id="hideB" class="btn btn-danger btn-sm" onclick="app.hiddenCreate()">Create new
+				blueprint</button>
+	
+		</div>
+	</div>
+
+	<div id="map" class="map">
+			
+	</div>
 
 </body>
 
