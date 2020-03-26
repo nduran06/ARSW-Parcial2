@@ -2,10 +2,13 @@ package edu.eci.arsw.covid.services;
 
 import java.util.List;
 
+import com.mashape.unirest.http.JsonNode;
+
 import edu.eci.arsw.covid.model.ApiResponse;
 import edu.eci.arsw.covid.model.Country;
 import edu.eci.arsw.covid.model.Covid19Stats;
 import edu.eci.arsw.covid.model.Data;
+import edu.eci.arsw.covid.model.Location;
 
 
 public interface CovidServices {
@@ -14,7 +17,9 @@ public interface CovidServices {
 	
 	public List<Covid19Stats> getCovidByCountry(String name);
 
-	List<Country> getAllCovidForCountry();
+	public List<Country> getAllCovidForCountry();
+
+	public String getLocation(String name);
 	
 	
 }

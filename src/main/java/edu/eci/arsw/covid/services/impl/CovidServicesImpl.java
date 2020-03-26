@@ -19,6 +19,7 @@ import edu.eci.arsw.covid.model.ApiResponse;
 import edu.eci.arsw.covid.model.Country;
 import edu.eci.arsw.covid.model.Covid19Stats;
 import edu.eci.arsw.covid.model.Data;
+import edu.eci.arsw.covid.model.Location;
 import edu.eci.arsw.covid.services.CovidServices;
 
 @Service
@@ -127,7 +128,14 @@ public class CovidServicesImpl implements CovidServices{
 	    	}
 	    }*/
 		
-	    
+		
+	}
+	
+	@Override
+	public String getLocation(String name) {
+		HttpResponse<String> response=HTTPConnection.getLocationResponseByCountry(name);
+		System.out.println(response.getBody());
+		return response.getBody();
 	}
 
 	
