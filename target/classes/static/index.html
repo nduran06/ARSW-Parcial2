@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+	<title>Airports</title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+
+	<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css"/>
+	<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/apirest/app.js"></script>
+    <script src="js/apirest/apiclient.js"></script>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://maps.googleapis.com/maps/api/js?language=en"></script>
+
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="app.start()">
+	
+	<form>
+		<br />
+		<h1 id="Users">COVID-19 CORONAVIRUS ARSW</h1>
+		
+		<!--<button type="button" class="btn btn-primary" onclick="app.getCovids()">
+				Search
+			</button>-->
+		<!--<div>
+			<input id="airportFinder" type="text" class="form-control">
+			<button type="button" class="btn btn-primary" onclick="app.findAirportsByName(airportFinder.value)">
+				Search
+			</button>
+
+		</div>-->
+		
+		<div class="first">
+			<div class="covidsCont">
+				<br/>
+				<table id="covidsTable" class="table table-hover">
+					<thead>
+						<tr>
+							<th>Country</th>
+							<th>Num deaths</th>
+							<th>Num infected</th>
+							<th>Num cured</th>
+						</tr>
+					</thead>
+					<tbody id="covidsTableBody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</form>
+
+	<div class="parte2">
+		<div id="selectedCountry">
+			<h2><b><output id="countryName"> </output></b></h2>
+			<br /><br />
+		</div>
+	
+		<div class="titulo_boton" id="aux_button">
+			<button type="button" id="hideB" class="btn btn-danger btn-sm" onclick="app.hiddenCreate()">Create new
+				blueprint</button>
+	
+		</div>
+	</div>
+
+	<div id="map" class="map">
+			
+	</div>
+
+	<div class="covidsCountry">
+		<br />
+		<table id="covidsCountryTable" class="table table-hover">
+			<thead >
+				
+				<tr>
+					<th>Name</th>
+					<th>Birth Date</th>
+				</tr>
+
+			</thead>
+			<tbody id="covidsCountryTableBody">
+			</tbody>
+		</table>
+	</div>
+
+	<div class="second">
+		<div class="covidsRegion">
+			<br />
+			<table id="covidsRegionTable" class="table table-hover">
+				<thead>
+					<tr>
+						<th>Region</th>
+						<th>Num deaths</th>
+						<th>Num infected</th>
+						<th>Num cured</th>
+					</tr>
+				</thead>
+				<tbody id="covidsRegionTableBody">
+				</tbody>
+				<br/><br/>
+
+			</table>
+		</div>
+	</div>
+	<footer id="footer" class="footer">
+		
+		<ul class="copyright">
+			<li>&copy; Escuela Colombia de Ingeniería Julio Garavito</li>
+		</ul>
+	</footer>
+
+</body>
+
+
+</html>

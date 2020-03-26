@@ -103,8 +103,6 @@ public class CovidServicesImpl implements CovidServices{
 	@Override
 	public List<Country> getAllCovidForCountry() {
 		
-		List<Covid19Stats> covidsListCache=this.covidCache.getAllCovids();
-		
 		HttpResponse<String> response=HTTPConnection.getResponseAll();
 		List<Covid19Stats> covids= getCovidData(response);
 		
