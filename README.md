@@ -1,5 +1,20 @@
 # Escuela Colombiana de Ingeniería Julio Garavito - Arquitecturas de Software ARSW - Parcial Segundo Tercio
 
+## Natalia Durán Vivas
+
+### Arquitectura
+
+La aplicación tiene una arquitectura Cliente/Servidor donde el cliente es el browser que solicita servicios a un apirest, y del mismo modo existe un controlador rest que se comunica con la capa de servicios para poder responder a las peticiones hechas por el cliete.
+
+
+### Instrucciones de ejecucion
+
+Se debe jecutar mvn spring-boot:run
+
+### Bonos
+
+Tiempo del caché
+
 ## Preparación para el Parcial
 
 Con el objetivo de preparar el examen final del segundo tercio, por favor siga las siguientes instrucciones.
