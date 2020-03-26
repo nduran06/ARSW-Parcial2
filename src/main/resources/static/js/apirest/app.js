@@ -25,7 +25,7 @@ var app = (function () {
 		current_country=country_name;
 		$("#countryName").text(country_name);
 		$('#hideB').click();
-		getLocation();
+		getLocation(current_country);
 		
 	};
 
@@ -35,7 +35,7 @@ var app = (function () {
 	};
 
 	var init = function () {
-
+		alert("init")
 		document.addEventListener('DOMContentLoaded', function () {
 			if (document.querySelectorAll('#map').length > 0) {
 				if (document.querySelector('html').lang)
@@ -91,9 +91,32 @@ var app = (function () {
 		
 	};
 
-	var getLocation=function(){
-		alert("get location")
-		apiclient.getLocation("colombia");
+	var plot = function (ms) {
+		var covids=JSON.parse(ms);
+		var latlng=covids[0].latlng;
+		alert(latlng)
+		
+		markers = [];
+		bounds = new google.maps.LatLngBounds();
+
+		var position = new google.maps.LatLng(latlng[0], latlng[1]);
+		markers.push(
+			new google.maps.Marker({
+				position: position,
+				map: map,
+				animation: google.maps.Animation.DROP
+			})
+		);
+
+		bounds.extend(position);
+		markersList = markers;
+		map.fitBounds(bounds);
+
+
+	};
+
+	var getLocation=function(name){
+		apiclient.getLocation(name, plot);
 	};
 	
 

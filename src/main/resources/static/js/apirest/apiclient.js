@@ -30,15 +30,14 @@ var apiclient = (function () {
 			});
 		}, 
 
-		getLocation: function (name) {
+		getLocation: function (name, callback) {
 			var urlApp = url + "/covids/location?name="+name;
 			$.ajax({
 				url: urlApp,
 				type: "GET",
 				success: function (res) {
 					alert(res)
-					alert(JSON.parse(res))
-					//callback(res);
+					callback(res);
 				},
 				error: function (err) {
 					alert("Error :"+err);
