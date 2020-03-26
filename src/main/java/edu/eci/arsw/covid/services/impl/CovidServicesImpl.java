@@ -41,9 +41,9 @@ public class CovidServicesImpl implements CovidServices{
 	public List<Data> getCovidByCountry(String name) {
 		
 		HttpResponse<String> response=HTTPConnection.getResponseByCountry(name);
+		System.out.println(response.getBody());
 		
-		
-		Gson gson=new GsonBuilder().create();
+		/*Gson gson=new GsonBuilder().create();
 	    List<Data> data=null;
 	    
 	    
@@ -65,10 +65,10 @@ public class CovidServicesImpl implements CovidServices{
 	    	else {
 	    		data=this.covidCache.getCovidsByCountry(name);
 	    	}
-	    }
+	    }*/
 		
 	    
-		return data;
+		return null;
 	}
 
 	
