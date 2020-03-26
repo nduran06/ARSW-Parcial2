@@ -6,17 +6,15 @@ var app = (function () {
 	var bounds;
 
 	var getTable = function (covids) {
-		alert("table")
 
 		$("#covidsTableBody").empty();
 
 		covids.map(function (covid) {
-			alert(covid)
 			$("#covidsTableBody").append(
-				"<tr> <td>" + covid.country + "</td>"+
-				"<td>" +  + "</td>" +
-				"<td>" +  + "</td>" +
-				"<td>" +  + "</td>" +
+				"<tr> <td>" + covid.name + "</td>"+
+				"<td>" + covid.deaths + "</td>" +
+				"<td>" + covid.confirmed + "</td>" +
+				"<td>" + covid.recovered + "</td>" +
 				"</tr>"
 			);
 		});

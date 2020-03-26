@@ -1,5 +1,6 @@
 package edu.eci.arsw.covid.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -15,6 +16,7 @@ import com.mashape.unirest.http.JsonNode;
 import edu.eci.arsw.covid.cache.CovidCache;
 import edu.eci.arsw.covid.connection.HTTPConnection;
 import edu.eci.arsw.covid.model.ApiResponse;
+import edu.eci.arsw.covid.model.Country;
 import edu.eci.arsw.covid.model.Covid19Stats;
 import edu.eci.arsw.covid.model.Data;
 import edu.eci.arsw.covid.services.CovidServices;
@@ -25,25 +27,69 @@ public class CovidServicesImpl implements CovidServices{
 	@Autowired
 	private CovidCache covidCache;
 	
-	private List<Covid19Stats> saveInCache(HttpResponse<String> response) {
+	private Country verifyExistingCountry(List<Country>countries, String name) {
+		Country oldCountry=null;
+		
+		int length=countries.size();
+		int cont=0;
+		
+		while(oldCountry==null && cont<length) {
+			Country country=countries.get(cont);
+			if(country.getName().equals(name)) {
+				oldCountry=country;
+			}
+			cont++;
+		}
+		
+		
+		return oldCountry;
+	}
+	
+	private ArrayList<Country> createCountries(List<Covid19Stats> covidList) {
+		
+		ArrayList<Country> countries=new ArrayList<Country>();
+		
+		for(Covid19Stats covids:covidList) {
+			String countryName=covids.getCountry();
+			
+			Country oldCountry = verifyExistingCountry(countries,countryName);
+			
+			if(oldCountry==null) {
+				Country newCountry=new Country(countryName, covids.getConfirmed(),
+						covids.getDeaths(), covids.getRecovered());
+				
+				countries.add(newCountry);
+			}
+			else {
+				oldCountry.setConfirmed(covids.getConfirmed());
+				oldCountry.setDeaths(covids.getDeaths());
+				oldCountry.setRecovered(covids.getRecovered());
+			}
+		}
+		
+		return countries;
+		
+	}
+	
+	private ArrayList<Country> saveInCache(HttpResponse<String> response) {
 		Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
 		ApiResponse apiResponse=null;
 	    apiResponse=gson.fromJson(response.getBody(), new TypeToken<ApiResponse>(){}.getType());
 	    
-		return apiResponse.getData().getCovid19Stats();
+		return createCountries(apiResponse.getData().getCovid19Stats());
 		
 	}
 	
 	
 	@Override
-	public List<Covid19Stats> getAllCovid() {
+	public ArrayList<Country> getAllCovid() {
 		HttpResponse<String> response=HTTPConnection.getResponseAll();
 		return saveInCache(response);
 	}
 	
 	
 	@Override
-	public List<Covid19Stats> getCovidByCountry(String name) {
+	public ArrayList<Country> getCovidByCountry(String name) {
 		
 		HttpResponse<String> response=HTTPConnection.getResponseByCountry(name);
 		return saveInCache(response);
