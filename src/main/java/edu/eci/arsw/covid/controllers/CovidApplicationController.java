@@ -24,9 +24,8 @@ public class CovidApplicationController {
 		try {
 			//System.out.println(this.covidServices.getAllCovid());
 			//return new ResponseEntity<>(this.covidServices.getAllCovid(),HttpStatus.ACCEPTED);  
-			System.out.println("hereee");
-			System.out.println(this.covidServices.getAllCovid());
-			return new ResponseEntity<>("good",HttpStatus.ACCEPTED);
+			
+			return new ResponseEntity<>(this.covidServices.getAllCovid(),HttpStatus.ACCEPTED);
 		}
 		catch(Exception e) {
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);

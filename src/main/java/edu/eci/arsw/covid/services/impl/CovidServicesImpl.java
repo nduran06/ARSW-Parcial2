@@ -24,13 +24,14 @@ public class CovidServicesImpl implements CovidServices{
 	private CovidCache covidCache;
 	
 	@Override
-	public List<Data> getAllCovid() {
-		Gson gson=new GsonBuilder().create();
+	public Data getAllCovid() {
+		Gson gson=new Gson();
 		HttpResponse<JsonNode> response=HTTPConnection.getResponseAll();
 		//System.out.println(response.getBody().toString());
 		Data data = gson.fromJson(response.getBody().toString(), Data.class);
-		System.out.println(data.getLastChecked());
-		return null;
+		
+		
+		return data;
 	}
 	
 	

@@ -1,31 +1,26 @@
 package edu.eci.arsw.covid.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
 	
-	private String lastChecked;
-	private List<Covid19Stats> covid19StatsList;
+	private CovidStats covidStats;
 	
 	public Data(){
 		
 	}
 	
-	public String getLastChecked() {
-		return this.lastChecked;
+	
+	public CovidStats getCovid19Stats() {
+		return this.covidStats;
 	}
 	
-	public void setLastChecked(String lastChecked) {
-		this.lastChecked=lastChecked;
+	public void setCovid19StatsList(CovidStats covidStats) {
+		this.covidStats=covidStats;
 	}
 	
-	public List<Covid19Stats> getCovid19StatsList() {
-		return this.covid19StatsList;
-	}
 	
-	public void setCovid19StatsList(List<Covid19Stats> covid19StatsList) {
-		this.covid19StatsList=covid19StatsList;
-	}
 	
 
 }
