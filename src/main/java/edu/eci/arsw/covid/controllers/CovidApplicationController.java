@@ -22,7 +22,10 @@ public class CovidApplicationController {
 	@Autowired
     private CovidServices covidServices;
 
-
+	/**
+	 * Retorna toda la información almacenada
+	 * @return
+	 */
 	@RequestMapping(path="/covids", method = RequestMethod.GET)
 	public ResponseEntity<?> getAllCovid(){
 		try {
@@ -35,6 +38,10 @@ public class CovidApplicationController {
               
     }
 	
+	/**
+	 * Retorna toda la información por países
+	 * @return
+	 */
 	@RequestMapping(path="/covids/countries", method = RequestMethod.GET)
 	public ResponseEntity<?> getAllCovidForCountry(){
 		try {
@@ -47,7 +54,11 @@ public class CovidApplicationController {
               
     }
 	
-	
+	/**
+	 * Retorna la información por regiones del país dado
+	 * @param country
+	 * @return
+	 */
 	@GetMapping("/covids/country")
 	public ResponseEntity<?> getCovidsByCountryName(@RequestParam String country){
 		try {
@@ -59,6 +70,11 @@ public class CovidApplicationController {
               
     }
 	
+	/**
+	 * Retorna la locación del parámetro dado
+	 * @param name
+	 * @return
+	 */
 	@GetMapping("/covids/location")
 	public ResponseEntity<?> getAirportsByName(@RequestParam String name){
 		try {

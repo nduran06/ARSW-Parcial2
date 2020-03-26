@@ -19,7 +19,6 @@ import edu.eci.arsw.covid.model.ApiResponse;
 import edu.eci.arsw.covid.model.Country;
 import edu.eci.arsw.covid.model.Covid19Stats;
 import edu.eci.arsw.covid.model.Data;
-import edu.eci.arsw.covid.model.Location;
 import edu.eci.arsw.covid.services.CovidServices;
 
 @Service
@@ -28,6 +27,12 @@ public class CovidServicesImpl implements CovidServices{
 	@Autowired
 	private CovidCache covidCache;
 	
+	/**
+	 * Verifica si el país dado según su nombre existe en la lista dada
+	 * @param countries
+	 * @param name
+	 * @return
+	 */
 	private Country verifyExistingCountry(List<Country>countries, String name) {
 		Country oldCountry=null;
 		
@@ -46,6 +51,11 @@ public class CovidServicesImpl implements CovidServices{
 		return oldCountry;
 	}
 	
+	/**
+	 * Crea los países correspondientes al response
+	 * @param covidList
+	 * @return
+	 */
 	private ArrayList<Country> createCountries(List<Covid19Stats> covidList) {
 		
 		ArrayList<Country> countries=new ArrayList<Country>();
@@ -72,8 +82,14 @@ public class CovidServicesImpl implements CovidServices{
 		
 	}
 	
-	private List<Covid19Stats> saveInCache(HttpResponse<String> response) {
+	/**
+	 * Ordena la información
+	 * @param response
+	 * @return
+	 */
+	private List<Covid19Stats> getCovidData(HttpResponse<String> response) {
 		Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+		
 		ApiResponse apiResponse=null;
 	    apiResponse=gson.fromJson(response.getBody(), new TypeToken<ApiResponse>(){}.getType());
 	    
@@ -81,56 +97,65 @@ public class CovidServicesImpl implements CovidServices{
 		
 	}
 	
-	
+	/**
+	 * Retorna toda la infomación por países
+	 */
 	@Override
 	public List<Country> getAllCovidForCountry() {
+		
+		List<Covid19Stats> covidsListCache=this.covidCache.getAllCovids();
+		
 		HttpResponse<String> response=HTTPConnection.getResponseAll();
-		List<Covid19Stats> covids= saveInCache(response);
+		List<Covid19Stats> covids= getCovidData(response);
 		
 		return createCountries(covids);
 	}
 	
-	
+	/**
+	 * Retorna toda la información almacenada
+	 */
 	@Override
 	public List<Covid19Stats> getAllCovid() {
 		HttpResponse<String> response=HTTPConnection.getResponseAll();
-		return saveInCache(response);
+		return getCovidData(response);
 	}
 	
 	
+	/**
+	 * Retorna la información por regiones del país dado
+	 */
 	@Override
 	public List<Covid19Stats> getCovidByCountry(String name) {
 		
 		HttpResponse<String> response=HTTPConnection.getResponseByCountry(name);
-		return saveInCache(response);
 		
-		/*Gson gson=new GsonBuilder().create();
-	    List<Data> data=null;
-	    
-	    
-	    List<Data> dataCache=this.getCovidByCountry(name);
-	    
-	    if(dataCache==null) {
-	    	data=gson.fromJson(response.getBody(), new TypeToken<List<Data>>(){}.getType());
-			this.covidCache.saveCovids(name, data);
-	    }
-	    else {
-	    	Long cacheTime=this.covidCache.getCacheTime(name);
+		List<Covid19Stats> covids=null;
+		if(this.covidCache.getCovidsByCountry(name)==null) {
+			covids=getCovidData(response);
+			this.covidCache.saveCovids(name, covids);
+		}
+		
+		else {
+			Long cacheTime=this.covidCache.getCacheTime(name);
 	    	Long dif=System.currentTimeMillis()-cacheTime;
 	    	Long realTime=TimeUnit.SECONDS.convert(dif, TimeUnit.MILLISECONDS);
 	    	
 	    	if(realTime>300) {
-	    		data=gson.fromJson(response.getBody(), new TypeToken<List<Data>>(){}.getType());
-	    		this.covidCache.saveCovids(name, data);
+	    		covids=getCovidData(response);
+	    		this.covidCache.saveCovids(name, covids);
 	    	}
 	    	else {
-	    		data=this.covidCache.getCovidsByCountry(name);
+	    		covids=this.covidCache.getCovidsByCountry(name);
 	    	}
-	    }*/
+		}
 		
+		return covids;
 		
 	}
 	
+	/**
+	 * Retorna la locación del parámetro dado
+	 */
 	@Override
 	public JsonNode getLocation(String name) {
 		HttpResponse<JsonNode> response=HTTPConnection.getLocationResponseByCountry(name);

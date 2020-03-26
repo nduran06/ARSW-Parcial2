@@ -2,6 +2,7 @@ package edu.eci.arsw.covid.cache;
 
 import java.util.List;
 
+import edu.eci.arsw.covid.model.Covid19Stats;
 import edu.eci.arsw.covid.model.Data;
 
 public interface CovidCache {
@@ -10,7 +11,7 @@ public interface CovidCache {
 	 * 
 	 * @return
 	 */
-	public List<Data> getAllCovids();
+	public List<Covid19Stats> getAllCovids();
 	
 	
 	/**
@@ -18,7 +19,7 @@ public interface CovidCache {
 	 * @param name
 	 * @return
 	 */
-	public List<Data> getCovidsByCountry(String name);
+	public List<Covid19Stats> getCovidsByCountry(String name);
 	
 	
 	/**
@@ -26,7 +27,7 @@ public interface CovidCache {
 	 * @param name
 	 * @param airports
 	 */
-	public void saveCovids(String name, List<Data> data);
+	public void saveCovids(String name, List<Covid19Stats> data);
 	
 	/**
 	 * 

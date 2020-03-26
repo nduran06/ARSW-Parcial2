@@ -8,7 +8,6 @@ import edu.eci.arsw.covid.model.ApiResponse;
 import edu.eci.arsw.covid.model.Country;
 import edu.eci.arsw.covid.model.Covid19Stats;
 import edu.eci.arsw.covid.model.Data;
-import edu.eci.arsw.covid.model.Location;
 
 
 public interface CovidServices {

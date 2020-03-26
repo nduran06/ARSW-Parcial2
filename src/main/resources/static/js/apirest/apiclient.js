@@ -22,7 +22,6 @@ var apiclient = (function () {
 				url: urlApp,
 				type: "GET",
 				success: function (res) {
-					alert(urlApp )
 					callback(res);
 				},
 				error: function (err) {
@@ -37,7 +36,6 @@ var apiclient = (function () {
 				url: urlApp,
 				type: "GET",
 				success: function (res) {
-					alert(res)
 					callback(res);
 				},
 				error: function (err) {

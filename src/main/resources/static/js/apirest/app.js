@@ -74,7 +74,6 @@ var app = (function () {
 
 	var getCovidsCountry = function (countryName) {
 		clearMarkers();
-		alert(countryName);
 		apiclient.getCountryData(countryName, getTableRegion);
 	};
 
@@ -144,7 +143,6 @@ var app = (function () {
 	var plot = function (ms) {
 		var covids=JSON.parse(ms);
 		var latlng=covids[0].latlng;
-		alert(latlng)
 		
 		markers = [];
 		bounds = new google.maps.LatLngBounds();
