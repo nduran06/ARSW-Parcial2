@@ -28,6 +28,22 @@ var apiclient = (function () {
 					alert("Error :"+err);
 				}
 			});
+		}, 
+
+		getLocation: function (name) {
+			var urlApp = url + "/covids/location?name="+name;
+			$.ajax({
+				url: urlApp,
+				type: "GET",
+				success: function (res) {
+					alert(res)
+					alert(JSON.parse(res))
+					//callback(res);
+				},
+				error: function (err) {
+					alert("Error :"+err);
+				}
+			});
 		}
 
 	};

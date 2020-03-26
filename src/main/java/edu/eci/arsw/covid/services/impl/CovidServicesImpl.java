@@ -132,8 +132,8 @@ public class CovidServicesImpl implements CovidServices{
 	}
 	
 	@Override
-	public String getLocation(String name) {
-		HttpResponse<String> response=HTTPConnection.getLocationResponseByCountry(name);
+	public JsonNode getLocation(String name) {
+		HttpResponse<JsonNode> response=HTTPConnection.getLocationResponseByCountry(name);
 		System.out.println(response.getBody());
 		return response.getBody();
 	}

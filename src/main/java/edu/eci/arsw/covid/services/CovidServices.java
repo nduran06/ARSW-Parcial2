@@ -19,7 +19,7 @@ public interface CovidServices {
 
 	public List<Country> getAllCovidForCountry();
 
-	public String getLocation(String name);
+	public JsonNode getLocation(String name);
 	
 	
 }

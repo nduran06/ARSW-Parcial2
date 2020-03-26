@@ -85,15 +85,15 @@ public class HTTPConnection {
 		return response;
 	}
 	
-	public static HttpResponse<String> getLocationResponseByCountry(String name){
+	public static HttpResponse<JsonNode> getLocationResponseByCountry(String name){
 		
 		
-		HttpResponse<String> response=null;
+		HttpResponse<JsonNode> response=null;
 		
 	    try {
 			response = Unirest.get(REQUEST_URL_LOCATION + name)
 			        .header(HEADER_HOST, RAPIAPI_HOST_LOCATION)
-			        .header(HEADER_KEY,RAPIAPI_KEY).asString();
+			        .header(HEADER_KEY,RAPIAPI_KEY).asJson();
 		} 
 	    catch (UnirestException e) {
 			e.printStackTrace();

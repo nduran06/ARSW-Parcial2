@@ -25,6 +25,7 @@ var app = (function () {
 		current_country=country_name;
 		$("#countryName").text(country_name);
 		$('#hideB').click();
+		getLocation();
 		
 	};
 
@@ -90,6 +91,10 @@ var app = (function () {
 		
 	};
 
+	var getLocation=function(){
+		alert("get location")
+		apiclient.getLocation("colombia");
+	};
 	
 
 	return {
@@ -97,7 +102,8 @@ var app = (function () {
 		start: start,
 		setCurrentCountry:setCurrentCountry,
 		hiddenCreate: hiddenCreate,
-		getCovids: getCovids
+		getCovids: getCovids,
+		getLocation:getLocation
 	}
 
 

@@ -62,7 +62,7 @@ public class CovidApplicationController {
 	@GetMapping("/covids/location")
 	public ResponseEntity<?> getAirportsByName(@RequestParam String name){
 		try {
-			return new ResponseEntity<>(this.covidServices.getLocation(name),HttpStatus.ACCEPTED);  
+			return new ResponseEntity<>(this.covidServices.getLocation(name).toString(),HttpStatus.ACCEPTED);  
 		}
 		catch(Exception e) {
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
