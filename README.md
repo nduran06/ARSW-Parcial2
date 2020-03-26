@@ -21,6 +21,19 @@ Se debe jecutar mvn spring-boot:run
 
 Tiempo del caché
 
+```markdown
+$ mvn javadoc:javadoc
+$ mvn javadoc:jar
+$ mvn javadoc:aggregate
+$ mvn javadoc:aggregate-jar
+$ mvn javadoc:test-javadoc
+$ mvn javadoc:test-jar
+$ mvn javadoc:test-aggregate
+$ mvn javadoc:test-aggregate-jar
+```
+Se encuentra en /tarjet/site 
+
+
 ## Preparación para el Parcial
 
 Con el objetivo de preparar el examen final del segundo tercio, por favor siga las siguientes instrucciones.
