@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.eci.arsw.covid.services.CovidServices;
 
@@ -18,11 +19,14 @@ public class CovidApplicationController {
     private CovidServices covidServices;
 
 
-	@GetMapping("/covids")
+	@RequestMapping(path="/covids", method = RequestMethod.GET)
 	public ResponseEntity<?> getAllCovid(){
 		try {
+			//System.out.println(this.covidServices.getAllCovid());
+			//return new ResponseEntity<>(this.covidServices.getAllCovid(),HttpStatus.ACCEPTED);  
+			System.out.println("hereee");
 			System.out.println(this.covidServices.getAllCovid());
-			return new ResponseEntity<>(this.covidServices.getAllCovid(),HttpStatus.ACCEPTED);  
+			return new ResponseEntity<>("good",HttpStatus.ACCEPTED);
 		}
 		catch(Exception e) {
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);

@@ -22,26 +22,7 @@ var app = (function () {
 
 
 	var plotMarkers = function (ms) {
-		getTable(ms)
-		markers = [];
-		bounds = new google.maps.LatLngBounds();
-
-		ms.forEach(function (marker) {
-			console.log(marker.location.latitude, marker.location.longitude);
-			var position = new google.maps.LatLng(marker.location.latitude, marker.location.longitude);
-
-			markers.push(
-				new google.maps.Marker({
-					position: position,
-					map: map,
-					animation: google.maps.Animation.DROP
-				})
-			);
-
-			bounds.extend(position);
-		});
-		markersList = markers;
-		map.fitBounds(bounds);
+		
 	};
 
 	var init = function () {
@@ -79,8 +60,8 @@ var app = (function () {
 	};
 
 	var getCovids = function () {
-		clearMarkers();
-		apiclient.getAllData(plotMarkers);
+		//clearMarkers();
+		apiclient.getAllData();
 	};
 
 
