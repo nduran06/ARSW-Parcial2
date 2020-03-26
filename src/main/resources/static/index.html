@@ -39,20 +39,33 @@
 
 		</div>-->
 		
-		<div class="covidsCont">
-			<br/>
-			<table id="covidsTable" class="table table-hover">
-				<thead>
-					<tr>
-						<th>Country</th>
-						<th>Num deaths</th>
-						<th>Num infected</th>
-						<th>Num cured</th>
-					</tr>
-				</thead>
-				<tbody id="covidsTableBody">
-				</tbody>
-			</table>
+		<div class="first">
+			<div class="covidsCont">
+				<br/>
+				<table id="covidsTable" class="table table-hover">
+					<thead>
+						<tr>
+							<th>Country</th>
+							<th>Num deaths</th>
+							<th>Num infected</th>
+							<th>Num cured</th>
+						</tr>
+					</thead>
+					<tbody id="covidsTableBody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div id="selectedCountry">
+			<input id="hideDiv" type="text" placeholder="name" />
+			<button type="button" class="btn btn-primary">Create</button>
+			<br/><br/>
+		</div>
+
+		<div class="titulo_boton">
+			<button type="button" id="hideB" class="btn btn-danger btn-sm" onclick="app.hiddenCreate()">Create new blueprint</button>
+			
 		</div>
 
 

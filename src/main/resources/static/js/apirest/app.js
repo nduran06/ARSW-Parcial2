@@ -4,6 +4,7 @@ var app = (function () {
 	var markersList;
 	var markers;
 	var bounds;
+	var current_country;
 
 	var getTable = function (covids) {
 
@@ -11,13 +12,18 @@ var app = (function () {
 
 		covids.map(function (covid) {
 			$("#covidsTableBody").append(
-				"<tr> <td> <a href='index.html'>" + covid.name + "</a></td>"+ 
+				"<tr> <td onclick=app.setCurrentCountry('"+covid.name+"')>" + covid.name + "</td>"+ 
 				"<td>" + covid.deaths + "</td>" +
 				"<td>" + covid.confirmed + "</td>" +
 				"<td>" + covid.recovered + "</td>" +
 				"</tr>"
 			);
 		});
+	};
+
+	var setCurrentCountry=function(country_name){
+		current_country=country_name;
+		alert(current_country)
 	};
 
 
@@ -64,13 +70,29 @@ var app = (function () {
 		apiclient.getAllDataCountries(plotMarkers);
 	};
 
+	var hiddenCreate = function(){
+    	var el = document.getElementById("selectedCountry"); 
+    	el.style.display = (el.style.display == 'none') ? 'block' : 'none'; 
+    }
+
+	var hideDiv = function(){
+        $('#hideB').click();
+
+    };
+	
 	var start = function(){
+		hideDiv();
 		getCovids();
-	}
+		
+	};
+
+	
 
 	return {
 		init: init,
 		start: start,
+		setCurrentCountry:setCurrentCountry,
+		hiddenCreate: hiddenCreate,
 		getCovids: getCovids
 	}
 
