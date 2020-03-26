@@ -23,6 +23,15 @@ table thead {
 	right: 0;
 }
 
+.parte2{
+	top:70%;
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	background-color:lightblue;
+}
+
 .sup{
 	width: 5%;
 	margin-top: 1%;

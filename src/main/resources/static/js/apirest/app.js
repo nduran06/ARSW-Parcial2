@@ -23,7 +23,8 @@ var app = (function () {
 
 	var setCurrentCountry=function(country_name){
 		current_country=country_name;
-		alert(current_country)
+		$("#countryName").text(country_name);
+		$('#hideB').click();
 	};
 
 
@@ -76,12 +77,14 @@ var app = (function () {
     }
 
 	var hideDiv = function(){
+		
         $('#hideB').click();
 
     };
 	
 	var start = function(){
-		hideDiv();
+		document.getElementById("aux_button").style.display = "none";
+		$('#hideB').click();
 		getCovids();
 		
 	};
