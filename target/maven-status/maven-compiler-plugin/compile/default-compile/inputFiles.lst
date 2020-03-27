@@ -1,9 +1,11 @@
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/api/CovidAPIApplication.java
+/home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/model/Country.java
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/model/Data.java
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/services/CovidServices.java
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/connection/HTTPConnection.java
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/cache/impl/CovidCacheImpl.java
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/services/impl/CovidServicesImpl.java
+/home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/model/ApiResponse.java
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/cache/CovidCache.java
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/model/Covid19Stats.java
 /home/natalia/Documentos/ARSW/Laboratorios/Parcial/CovidApp/src/main/java/edu/eci/arsw/covid/controllers/CovidApplicationController.java
