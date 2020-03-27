@@ -1,5 +1,5 @@
 var apiclient = (function () {
-	var url = "http://localhost:8080/rapidapi"; 
+	var url = "http://https://hidden-thicket-36590.herokuapp.com/rapidapi"; 
 
 	return {
 		getAllDataCountries: function (callback) {
