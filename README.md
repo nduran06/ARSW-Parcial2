@@ -23,7 +23,7 @@ Tiempo del caché
 
 ### Link Heroku
 
-https://github.com/nduran06/ARSW-Parcial2.git
+https://hidden-thicket-36590.herokuapp.com/
 
 ### Javadoc
 
